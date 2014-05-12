@@ -2,14 +2,14 @@
 Flask-Profile
 -------------
 
-Description goes here...
+A profiler extension for finding bottlenecks in Flask application.
 
 Links
 `````
 
-* `documentation <http://packages.python.org/Flask-Profile>`_
+* `documentation <https://github.com/fengsp/flask-profile>`_
 * `development version
-  <http://github.com/USERNAME/REPOSITORY/zipball/master#egg=Flask-Profile-dev>`_
+  <http://github.com/fengsp/flask-profile/zipball/master#egg=Flask-Profile-dev>`_
 
 """
 from setuptools import setup
@@ -18,11 +18,11 @@ from setuptools import setup
 setup(
     name='Flask-Profile',
     version='0.1',
-    url='<enter URL here>',
+    url='https://github.com/fengsp/flask-profile',
     license='BSD',
-    author='fsp',
-    author_email='your-email-here@example.com',
-    description='<enter short description here>',
+    author='Shipeng Feng',
+    author_email='fsp261@gmail.com',
+    description='Flask Application Profiler',
     long_description=__doc__,
     packages=['flask_profile'],
     zip_safe=False,
@@ -31,7 +31,6 @@ setup(
         'Flask'
     ],
     classifiers=[
-        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
