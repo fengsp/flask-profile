@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Calls</th>
+      <th>Total Time (ms)</th>
+      <th>Per Call (ms)</th>
+      <th>Cumulative Time (ms)</th>
+      <th>Per Call (ms)</th>
+      <th>Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stat in stats %}
+      <tr>
+        <td>{{ stat.ncalls }}</td>
+        <td>{{ stat.tottime }}</td>
+        <td>{{ '%.4f'|format(stat.percall) }}</td>
+        <td>{{ stat.cumtime }}</td>
+        <td>{{ '%.4f'|format(stat.percall_cum) }}</td>
+        <td>{{ stat.filename }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
