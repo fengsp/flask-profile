@@ -101,7 +101,7 @@ class Profiler(object):
     def content(self):
         """HTML content for your profile stats.
         """
-        return render_template('profiler.html', stats=self.stats)
+        return render_template('_profile/profiler.html', stats=self.stats)
 
     def before_request(self):
         self.profiler = profile.Profile()
