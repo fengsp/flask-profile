@@ -1,0 +1,109 @@
+#_profileContent {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+  color: #000;
+  font-size: 15px;
+}
+#_profileContentWrapper {
+  position: fixed;
+  background-color: #fff;
+  margin: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 28px 20px 20px 20px;
+  overflow: auto;
+  z-index: 99999999;
+}
+#_profileContent h1 {
+  font-size: 32px;
+  margin: 0 0 0.3em 0;
+}
+#_profileContent h2 {
+  font-size: 16px;
+  margin: 1.3em 8px 0 8px;
+  padding: 9px;
+  background-color: #11557C;
+  color: white;
+}
+#_profileContent h1, h2 {
+  font-weight: normal;
+}
+#_profileContent em {
+  font-style: normal;
+  color: #A5D6D9;
+  font-weight: normal;
+}
+#_profileContent .profileContentDetail {
+  margin: 0 8px 0 8px;
+  font-size: 14px;
+}
+#_profileContent .profileContentFooter {
+  font-size: 13px;
+  text-align: right;
+  margin: 30px 8px 0 0;
+  color: #86989B;
+}
+
+/* tablesorted */
+#_profileContent table.tablesorter {
+  width: 100%;
+}
+#_profileContent table.tablesorter thead th {
+  background: url(../img/bg.gif) center right no-repeat;
+  padding-right: 20px;
+  cursor: pointer;
+}
+#_profileContent table.tablesorter tr.profileContentTrOdd {
+  background-color: #fff;
+}
+#_profileContent table.tablesorter tr.profileContentTrEven {
+  background-color: #E8EFF0;
+}
+#_profileContent table.tablesorter thead .headerSortUp {
+  background-image: url(../img/asc.gif);
+}
+#_profileContent table.tablesorter thead .headerSortDown {
+  background-image: url(../img/desc.gif);
+}
+#_profileContent table.tablesorter thead .headerSortDown, #_profileContent table.tablesorter thead .headerSortUp {
+  background-color: #8dbdd8;
+}
+
+/* handle */
+#_profileContent #flaskProfileHandle {
+  position: fixed;
+  background: #fff;
+  border: 1px solid #11557C;
+  top: 30px;
+  right: 0;
+  z-index: 100000000;
+  opacity: 0.75;
+}
+
+#_profileContent a#flaskShowProfileButton {
+  display: block;
+  height: 75px;
+  width: 30px;
+  border-right: none;
+  border-bottom: 4px solid #fff;
+  border-top: 4px solid #fff;
+  border-left: 4px solid #fff;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  text-indent: -999999px;
+  background: #11557C url(../img/profile.png) no-repeat left center;
+  opacity: 0.5;
+}
+
+#_profileContent a#flaskShowProfileButton:hover {
+  background-color: #11557C;
+  padding-right: 6px;
+  border-top-color: #FFFF00;
+  border-left-color: #FFFF00;
+  border-bottom-color: #FFFF00;
+  opacity: 1.0;
+}

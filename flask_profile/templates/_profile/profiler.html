@@ -1,24 +1,45 @@
-<table>
-  <thead>
-    <tr>
-      <th>Calls</th>
-      <th>Total Time (ms)</th>
-      <th>Per Call (ms)</th>
-      <th>Cumulative Time (ms)</th>
-      <th>Per Call (ms)</th>
-      <th>Function</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for stat in stats %}
-      <tr>
-        <td>{{ stat.ncalls }}</td>
-        <td>{{ stat.tottime }}</td>
-        <td>{{ '%.4f'|format(stat.percall) }}</td>
-        <td>{{ stat.cumtime }}</td>
-        <td>{{ '%.4f'|format(stat.percall_cum) }}</td>
-        <td>{{ stat.filename }}</td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div id="_profileContent" style="display:block;">
+  <link rel="stylesheet" href="_profile/static/css/profiler.css" type="text/css" />
+  
+  <div id="_profileContentWrapper" style="display:none">
+  <h1>Total: {{ total_time }}ms</h1>
+  <h2>Function calls <em>(you can sort them by clicking)</em></h2>
+  <div class="profileContentDetail">
+    <table class="tablesorter">
+      <thead>
+        <tr>
+          <th>Calls</th>
+          <th>Total Time (ms)</th>
+          <th>Per Call (ms)</th>
+          <th>Cumulative Time (ms)</th>
+          <th>Per Call (ms)</th>
+          <th>Function</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for func in func_calls %}
+        <tr class="{{ loop.cycle('profileContentTrOdd', 'profileContentTrEven') }}">
+          <td>{{ func.ncalls }}</td>
+          <td>{{ func.tottime }}</td>
+          <td>{{ '%.4f'|format(func.percall) }}</td>
+          <td>{{ func.cumtime }}</td>
+          <td>{{ '%.4f'|format(func.percall_cum) }}</td>
+          <td>{{ func.filename }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="profileContentFooter">
+    Brought to you by <strong>Flask-Profile</strong>.
+  </div>
+  </div>
+
+  <div id="flaskProfileHandle">
+    <a title="Show Profile" id="flaskShowProfileButton" href="#">&laquo;</a>
+  </div>
+
+  <script type="text/javascript" src="_profile/static/js/jquery.js"></script>
+  <script type="text/javascript" src="_profile/static/js/jquery.tablesorter.js"></script>
+  <script type="text/javascript" src="_profile/static/js/profiler.js"></script>
+</div>

@@ -28,7 +28,7 @@ setup(
     zip_safe=False,
     platforms='any',
     install_requires=[
-        'Flask'
+        'Flask >= 0.7'
     ],
     classifiers=[
         'Environment :: Web Environment',

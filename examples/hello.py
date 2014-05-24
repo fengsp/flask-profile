@@ -8,6 +8,7 @@
     :copyright: (c) 2014 by Shipeng Feng.
     :license: BSD, see LICENSE for more details.
 """
+import urllib
 
 from flask import Flask, render_template
 from flask.ext.profile import Profiler
@@ -15,11 +16,12 @@ from flask.ext.profile import Profiler
 
 app = Flask(__name__)
 app.debug = True
-profiler = Profiler(app)
+Profiler(app)
 
 
 @app.route('/')
 def index():
+    # urllib.urlopen('http://www.apple.com')
     return render_template('hello.html')
 
 
