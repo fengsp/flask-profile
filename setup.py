@@ -25,6 +25,7 @@ setup(
     description='Flask Application Profiler',
     long_description=__doc__,
     packages=['flask_profile'],
+    include_package_data=True,
     zip_safe=False,
     platforms='any',
     install_requires=[
