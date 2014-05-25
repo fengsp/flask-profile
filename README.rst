@@ -40,6 +40,17 @@ You can also create the object once and configure the application later:
         profiler.init_app(app)
         return app
 
+If you want the profiler collects data including Extensions, please make sure
+that the Extension is used after Flask-Profile:
+
+.. code:: python
+    
+    from flask.ext.session import Session
+    from flask.ext.profile import Profiler
+
+    Profiler(app)
+    Session(app)
+
 .. note::
     
     You can click the column name to sort in the page.
