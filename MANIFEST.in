@@ -1,1 +1,3 @@
 include LICENSE CHANGES *.py
+recursive-include flask_profile/static *
+recursive-include flask_profile/templates *
