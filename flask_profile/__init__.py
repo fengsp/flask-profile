@@ -64,9 +64,10 @@ def filename_format(filename):
 class Profiler(object):
     """Profiler Extension.
     """
-    
+
     def __init__(self, app=None):
         self.app = app
+        self.enable_func = None
         if app is not None:
             self.init_app(app)
 
@@ -75,10 +76,26 @@ class Profiler(object):
 
         :param app: the Flask app object.
         """
-        if app.debug:
-            app.register_blueprint(blueprint)
-            app.before_request(ProfilerTool.before_request)
-            app.after_request(ProfilerTool.after_request)
+        app.register_blueprint(blueprint)
+        app.before_request(self._before_request)
+        app.after_request(self._after_request)
+
+    @property
+    def _is_enabled(self):
+        if self.app and self.app.debug:
+            return True
+        result = self.enable_func() if callable(self.enable_func) else False
+        assert isinstance(result, bool)
+        return result
+
+    def _before_request(self):
+        if self._is_enabled:
+            ProfilerTool.before_request()
+
+    def _after_request(self, response):
+        if self._is_enabled:
+            return ProfilerTool.after_request(response)
+        return response
 
 
 class ProfilerTool(object):
@@ -93,7 +110,7 @@ class ProfilerTool(object):
     def disable(self):
         self.profiler.disable()
         self.stats = pstats.Stats(self.profiler)
-        
+
     @property
     def func_calls(self):
         """Get collected profiling data.
@@ -147,8 +164,9 @@ class ProfilerTool(object):
     def content(self):
         """HTML content for your profile stats.
         """
-        return render_template('_profile/profiler.html', 
-                    total_time=self.total_time, func_calls=self.func_calls)
+        return render_template('_profile/profiler.html',
+                               total_time=self.total_time,
+                               func_calls=self.func_calls)
 
     @classmethod
     def before_request(cls):
@@ -156,12 +174,15 @@ class ProfilerTool(object):
 
     @classmethod
     def after_request(cls, response):
+        if not hasattr(request, '_profiler_tool'):
+            return response
         request._profiler_tool.disable()
         if response.status_code == 200 and \
                 response.headers['content-type'].startswith('text/html'):
             html = response.data.decode(response.charset)
-            html = insensitive_replace(html, '</body>', 
-                                  request._profiler_tool.content + '</body>')
+            html = insensitive_replace(html, '</body>',
+                                       request._profiler_tool.content
+                                       + '</body>')
             html = html.encode(response.charset)
             response.response = [html]
             response.content_length = len(html)
