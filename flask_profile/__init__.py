@@ -64,7 +64,7 @@ def filename_format(filename):
 class Profiler(object):
     """Profiler Extension.
     """
-    
+
     def __init__(self, app=None):
         self.app = app
         if app is not None:
@@ -93,7 +93,7 @@ class ProfilerTool(object):
     def disable(self):
         self.profiler.disable()
         self.stats = pstats.Stats(self.profiler)
-        
+
     @property
     def func_calls(self):
         """Get collected profiling data.
@@ -147,8 +147,9 @@ class ProfilerTool(object):
     def content(self):
         """HTML content for your profile stats.
         """
-        return render_template('_profile/profiler.html', 
-                    total_time=self.total_time, func_calls=self.func_calls)
+        return render_template('_profile/profiler.html',
+                               total_time=self.total_time,
+                               func_calls=self.func_calls)
 
     @classmethod
     def before_request(cls):
@@ -160,8 +161,8 @@ class ProfilerTool(object):
         if response.status_code == 200 and \
                 response.headers['content-type'].startswith('text/html'):
             html = response.data.decode(response.charset)
-            html = insensitive_replace(html, '</body>', 
-                                  request._profiler_tool.content + '</body>')
+            html = insensitive_replace(
+                html, '</body>', request._profiler_tool.content + '</body>')
             html = html.encode(response.charset)
             response.response = [html]
             response.content_length = len(html)
