@@ -1,5 +1,5 @@
 <div id="_profileContent" style="display:block;">
-  <link rel="stylesheet" href="_profile/static/css/profiler.css" type="text/css" />
+  <link rel="stylesheet" href="{{url_for('_profile.static', filename='css/profiler.css')}}" type="text/css" />
   
   <div id="_profileContentWrapper" style="display:none">
   <h1>Total: {{ total_time }}ms</h1>
@@ -39,7 +39,7 @@
     <a title="Show Profile" id="flaskShowProfileButton" href="#">&laquo;</a>
   </div>
 
-  <script type="text/javascript" src="_profile/static/js/jquery.js"></script>
-  <script type="text/javascript" src="_profile/static/js/jquery.tablesorter.js"></script>
-  <script type="text/javascript" src="_profile/static/js/profiler.js"></script>
+  <script type="text/javascript" src="{{url_for('_profile.static', filename='js/jquery.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('_profile.static', filename='js/jquery.tablesorter.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('_profile.static', filename='js/profiler.js')}}"></script>
 </div>
