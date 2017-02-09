@@ -40,6 +40,12 @@ You can also create the object once and configure the application later:
         profiler.init_app(app)
         return app
 
+
+.. note::
+
+    This only works if your response is one html page because the
+    profiling result is showed in html.
+
 If you want the profiler collects data including Extensions, please make sure
 that the Extension is used after Flask-Profile:
 
