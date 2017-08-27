@@ -16,7 +16,7 @@ Usage
 .. code:: python
     
     from flask import Flask, render_template_string
-    from flask.ext.profile import Profiler
+    from flask_profile import Profiler
 
     app = Flask(__name__)
     # Flask-Profile is only actived under debug mode
@@ -46,8 +46,8 @@ that the Extension is used after Flask-Profile:
 
 .. code:: python
     
-    from flask.ext.session import Session
-    from flask.ext.profile import Profiler
+    from flask_session import Session
+    from flask_profile import Profiler
 
     Profiler(app)
     Session(app)
